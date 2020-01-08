@@ -16,6 +16,6 @@ ball and the bot get the point.
 ## Implementation
 
 In the code, each time you send him `¨ping` or `¨pong` a random function is started,
-there is 1 in 5 chance someone won.  
+there is 1 in 5 chance someone win.  
 To know who is the winner, a second random function is started and in that one,
-there is 2 in 3 chances you won.
+there is 2 in 3 chances you win.
