@@ -1,0 +1,18 @@
+# Some files
+LICENSE
+README.md
+Dockerfile
+docker-compose.yml
+.dockerignore
+.git/
+.gitignore
+.env
+.env.tpl
+
+# vim swap file
+*.swp
+
+# Rust things
+target/
+Cargo.lock
+**/*.rb.bk
