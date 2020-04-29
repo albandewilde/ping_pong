@@ -6,7 +6,6 @@ docker-compose.yml
 .dockerignore
 .git/
 .gitignore
-.env
 .env.tpl
 
 # vim swap file
