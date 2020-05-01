@@ -4,3 +4,5 @@ services:
     discord_bot:
         build: "."
         env_file: .env
+        volumes:
+            - ${PWD}/scores.json:/scores.json

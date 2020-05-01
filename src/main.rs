@@ -5,7 +5,10 @@ use serenity::{
     prelude::*,
 };
 
-mod helpers;
+mod routeur;
+pub mod play;
+pub mod score;
+pub mod helpers;
 
 struct Handler;
 
@@ -14,9 +17,9 @@ impl EventHandler for Handler {
         if msg.content.chars().nth(0).unwrap() == '¨' {
 
             // 2 because ¨ is a two bites caracter
-            let result = helpers::results(&msg.content.get(2..).unwrap());
+            let resp = routeur::route(&msg);
 
-            if let Err(why) = msg.channel_id.say(&ctx.http, result) {
+            if let Err(why) = msg.channel_id.say(&ctx.http, resp) {
                 println!("Error sending message: {:?}", why);
             }
         }
