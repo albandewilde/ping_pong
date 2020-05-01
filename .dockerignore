@@ -6,6 +6,7 @@ docker-compose.yml
 .dockerignore
 .git/
 .gitignore
+.env
 .env.tpl
 
 # vim swap file
@@ -15,3 +16,6 @@ docker-compose.yml
 target/
 Cargo.lock
 **/*.rb.bk
+
+# the scores file
+scores.json
