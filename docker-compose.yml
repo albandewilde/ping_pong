@@ -5,4 +5,4 @@ services:
         build: "."
         env_file: .env
         volumes:
-            - ${PWD}/scores.json:/scores.json
+            - ./scores.json:/scores.json
