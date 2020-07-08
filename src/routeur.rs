@@ -1,11 +1,9 @@
-use serenity::{
-    model::{channel::Message},
-};
+use serenity::model::channel::Message;
 
-use crate::{play, score, helpers};
+use crate::{helpers, play, score};
 
 pub fn route(msg: &Message) -> String {
-    let msg_content = msg.content.get(2..).unwrap().to_lowercase();
+    let msg_content = helpers::format_msg(&msg.content);
 
     if msg_content == "ping" || msg_content == "pong" {
         play::ping_pong(&msg)

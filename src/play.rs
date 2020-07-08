@@ -1,10 +1,8 @@
 use rand::Rng;
 
-use serenity::{
-    model::{channel::Message},
-};
+use serenity::model::channel::Message;
 
-use crate::{score, helpers};
+use crate::{helpers, score};
 
 fn there_in_a_winner() -> bool {
     return rand::thread_rng().gen_range(0, 5) == 0;
@@ -15,7 +13,7 @@ fn the_bot_win() -> bool {
 }
 
 pub fn ping_pong(msg: &Message) -> String {
-    let msg_content = msg.content.get(2..).unwrap().to_lowercase();
+    let msg_content: String = helpers::format_msg(&msg.content);
     let username = helpers::discord_username(&msg.author);
 
     String::from(
@@ -35,6 +33,6 @@ pub fn ping_pong(msg: &Message) -> String {
             } else {
                 "..."
             }
-        }
+        },
     )
 }

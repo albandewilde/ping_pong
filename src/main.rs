@@ -5,18 +5,23 @@ use serenity::{
     prelude::*,
 };
 
-mod routeur;
-pub mod play;
-pub mod score;
 pub mod helpers;
+pub mod play;
+mod routeur;
+pub mod score;
 
 struct Handler;
 
 impl EventHandler for Handler {
     fn message(&self, ctx: Context, msg: Message) {
-        if msg.content.chars().nth(0).unwrap() == '¨' {
+        // Check the prefix of the message
+        let prefix = match msg.content.chars().nth(0) {
+            Some(chr) => chr,
+            None => '0',
+        };
 
-            // 2 because ¨ is a two bites caracter
+        // Check if it is our prefix
+        if prefix == '¨' {
             let resp = routeur::route(&msg);
 
             if let Err(why) = msg.channel_id.say(&ctx.http, resp) {
@@ -31,8 +36,7 @@ impl EventHandler for Handler {
 }
 
 fn main() {
-    let token = env::var("DISCORD_TOKEN")
-        .expect("Expected a token in the environment");
+    let token = env::var("DISCORD_TOKEN").expect("Expected a token in the environment");
     let mut client = Client::new(&token, Handler).expect("Err creating client");
 
     if let Err(why) = client.start_shards(2) {
